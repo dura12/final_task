@@ -15,12 +15,10 @@ NextAuth: Integrate this powerful authentication library to handle all your auth
 Installation
 1 . Clone the Repository
 ```
-https://github.com/dura12/final_task.git
-```
+git clone https://github.com/dura12/final_task.git
 ```
 2 . Navigate to the project directory:
-
-```
+``
 cd test-next-auth
 ```
 3 . Install the necessary dependencies:
