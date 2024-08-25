@@ -19,9 +19,11 @@ const BookMarks = ({ data }: BookMarksProps) => { // Use `data` here
 console.log(data)
 
   if (loading) return <div>Loading...</div>;
-  if (status === 'unauthenticated') return <div>Please sign in to see your bookmarks.</div>;
-  if (error) return <div>{error}</div>;
-  if (data.length === 0) {
+  else if (status === 'unauthenticated') return  <div className="flex justify-center items-center">
+  <h1 className="text-3xl font-extrabold text-gray-900 pt-20">Please sign in to see your bookmarks.</h1>
+</div>;
+   if (error) return <div>{error}</div>;
+    if  (data.length === 0) {
     return (
       <div className="flex justify-center items-center">
         <h1 className="text-3xl font-extrabold text-gray-900 pt-20">No Bookmarked Jobs</h1>

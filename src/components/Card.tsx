@@ -70,7 +70,7 @@ const Card = () => {
           <img className='p-2 w-[70px] h-[70px]' src={user.logoUrl} alt={user.title} />
           <div>
             <h1 
-              data-testid={`job-title-${user.id}`}
+              test-id={`title${user.id}`}
               onClick={() => handleTitleClick(user.id)} 
               className='font-bold pb-1 text-3xl cursor-pointer'
             >

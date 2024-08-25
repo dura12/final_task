@@ -1,4 +1,3 @@
-// 'use client';
 import { getSession } from 'next-auth/react';
 import axios from 'axios';
 async function bookmark(id: string) {
@@ -17,7 +16,7 @@ async function bookmark(id: string) {
     return response.data;
   } catch (error) {
     console.error(`Error bookmarking id ${id}:`);
-    throw error; // rethrow to handle in the component
+    throw error; 
   }
 }
 
@@ -33,16 +32,16 @@ async function unBookmark(id: string) {
     return response.data;
   } catch (error) {
     console.error(`Error unbookmarking id ${id}:`);
-    throw error; // rethrow to handle in the component
+    throw error;
   }
 }
 
-export default async function toggleBookmark(id: string, bookmarked: boolean) {
+export default async function toggleBookmark(id: string, isBookmarked: boolean) {
   const session = await getSession();
   if (!session?.accessToken) {
     throw new Error('No access token found');
   }
-  if (!bookmarked) {
+  if (!isBookmarked) {
     return bookmark(id);
   } else {
     return unBookmark(id);
