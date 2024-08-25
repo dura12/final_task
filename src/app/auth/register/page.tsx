@@ -1,3 +1,4 @@
+
 import RegisterForm from '@/components/SignUp'
 import React from 'react'
 

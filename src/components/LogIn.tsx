@@ -1,5 +1,4 @@
-'use client';
-
+'use client'
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { signIn } from 'next-auth/react';
@@ -15,7 +14,6 @@ const LoginForm = () => {
   const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<Formvalues>();
   const [error, seterror] = useState<string>('');
-
   const onSubmit: SubmitHandler<Formvalues> = async (values) => {
     try {
       const response = await fetch('https://akil-backend.onrender.com/login', {
@@ -45,7 +43,7 @@ const LoginForm = () => {
 
       if (res?.ok) {
         console.log("logged in");
-        router.push("/auth/welcome");
+        router.push("/posts");
       } else {
 
         console.error('Sign in failed');
@@ -73,11 +71,12 @@ const LoginForm = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-lg p-2 text-gray-700">
+            <label  htmlFor="email" className="block text-lg p-2 text-gray-700">
               Email
             </label>
             <input
               id="email"
+              test-id = 'email-input'
               {...register("email", {
                 required: "Email is required",
                 pattern: {
@@ -99,10 +98,11 @@ const LoginForm = () => {
             <input
               {...register('password', { required: 'Password is required' })}
               type="password"
+              test-id = 'password-input'
               className="w-full px-5 py-3 border border-gray-300 rounded-3xl"
               placeholder="Enter password"
             />
-            {errors.password && <p className="text-red-400 text-lg mt-2">{errors.password.message}</p>}
+            {errors.password && <p className="text-red-400 text-sm mt-2">{errors.password.message}</p>}
           </div>
 
           {error && (
@@ -111,7 +111,7 @@ const LoginForm = () => {
             </p>
           )}
 
-          <button type="submit" className="w-full py-3 mt-6 text-white bg-indigo-900 rounded-full">
+          <button type="submit" test-id = 'submit' className="w-full py-3 mt-6 text-white bg-indigo-900 rounded-full">
             Login
           </button>
         </form>

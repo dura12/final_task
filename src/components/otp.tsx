@@ -13,7 +13,7 @@ const Otp = () => {
   const router = useRouter();
   const [otp, otpset] = useState("");
   const queryemail =  useSearchParams();
-  const email = queryemail.get('email');
+  const email = queryemail?.get('email');
 
   const handleotpchange = (notp: any) => {
     otpset(notp);

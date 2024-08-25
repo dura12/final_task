@@ -2,9 +2,9 @@
   authentication functionality using NextAuth in your application, including signup and signin pages, and integrate with provided API endpoints for user registration and authentication.
 
 ## features
-    Sign up
-    Login with credential
-    Client side form validation
+  Sign up
+  Login with credential
+  Client side form validation
 ## Technologies Used
 Next.js: Leverage the power of this popular React framework to build a performant and scalable application.
 TypeScript: Enjoy the benefits of static typing and improved developer experience.
@@ -29,7 +29,7 @@ cd test-next-auth
 npm install
 ```
 4 . Start the development server:
-``
+```
 `npm run dev
 ```
  SIGNIN PAGE

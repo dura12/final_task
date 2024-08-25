@@ -1,7 +1,14 @@
+
+'use client'
 import Image from "next/image";
-import LoginForm from "@/components/LogIn";
+import Opportunities from "./posts/page";
+import { Provider } from "react-redux";
+import { store } from "@/lib/store";
 export default function Home() {
   return (
-    <LoginForm></LoginForm>
+    <Provider store = {store}>
+       <Opportunities />
+    </Provider>
+   
   );
 }

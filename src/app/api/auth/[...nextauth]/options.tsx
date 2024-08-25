@@ -3,6 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
+import { signIn } from "next-auth/react";
+
 
 export const options: NextAuthOptions = {
   providers: [
@@ -32,6 +34,7 @@ export const options: NextAuthOptions = {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
+             
               email: credentials?.email,
               password: credentials?.password,
             }),
@@ -42,9 +45,16 @@ export const options: NextAuthOptions = {
           }
       
           const user = await res.json();
+          console.log(user.data)
           if (user) {
-            console.log("User Exists:", user);
-            return user;
+            // console.log("User Exists:", user);
+            return {
+              id: user.data.id,
+              name: user.data.name,
+              email: user.data.email,
+              accessToken: user.data.accessToken,
+              refreshToken: user.data.refreshToken
+            };
           }
         } catch (error) {
           console.error('Unexpected error:', error);
@@ -55,18 +65,24 @@ export const options: NextAuthOptions = {
 })
       
   ],
+
   callbacks: {
-    async jwt({ token, user }: { token: JWT; user?: User }) {
-      if (user) {
-        console.log(user);
-        
+    async signIn({user}){
+      return true 
+    },
+    async jwt({ token, user  , session}) {
+      token = {
+        ...token,
+        ...user
       }
-      return token;
+      return token
     },
     async session({ session, token }: { session: any; token: JWT }) {
-      if (session?.user) {
-        session.user.role = token.role as string;
+      session=  {
+        ...session,
+        ...token
       }
+      console.log(session)
       return session;
     },
   },

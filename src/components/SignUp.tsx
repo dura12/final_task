@@ -1,10 +1,10 @@
 "use client";
-
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+
 
 type FormValues = {
   name: string;
@@ -38,7 +38,7 @@ const RegisterForm = () => {
 
     if (response.ok) {
     console.log("successful result")
-    route.push(`/auth/verify?email=${data.email}`);
+    route.push(`/verify?email=${data.email}`);
     const res = response.json
   
     } else {
