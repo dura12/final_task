@@ -55,7 +55,7 @@ const router = useRouter()
               <button
                 test-id={status === 'authenticated' ? 'Logout' : 'Login'}
                 onClick={handleAuth}
-                className="block py-2 px-3 rounded cursor-pointe md:border-0 md:p-0 text-gray-900 dark:text-white"
+                className="block  px-3 rounded w-28 bg-blue-500  text-lg cursor-pointer  text-white"
               >
                 {status === 'authenticated' ? 'Logout' : 'Login'}
               </button>

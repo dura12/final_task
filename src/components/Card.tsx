@@ -57,6 +57,9 @@ const Card = () => {
         console.error("Error handling bookmark:", error);
       }
     }
+    else {
+      alert("You must Login First")
+    }
   };
 
   return (

@@ -39,9 +39,9 @@ async function unBookmark(id: string) {
 export default async function toggleBookmark(id: string, isBookmarked: boolean) {
   const session = await getSession();
   if (!session?.accessToken) {
-    throw new Error('No access token found');
+  alert("You must login first")
   }
-  if (!isBookmarked) {
+  if  (!isBookmarked) {
     return bookmark(id);
   } else {
     return unBookmark(id);
